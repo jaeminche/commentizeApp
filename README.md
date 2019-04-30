@@ -1,3 +1,3 @@
 Commentize App
 
-Upload anything and get some comments!
+Upload anything and get it commented!
