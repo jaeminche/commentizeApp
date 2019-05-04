@@ -40,6 +40,50 @@ router.post("/", isLoggedIn, function(req, res) {
   });
 });
 
+// comments edit
+router.get("/:comment_id/edit", function(req, res) {
+  Comment.findById(req.params.comment_id, function(err, foundComment) {
+    if (err) {
+      res.redirect("back");
+    } else {
+      res.render("comments/edit", {
+        comment: foundComment,
+        commentee_id: req.params.id
+      });
+    }
+  });
+});
+
+// comments update
+router.put("/:comment_id", function(req, res) {
+  Comment.findOneAndUpdate(
+    { _id: req.params.comment_id },
+    req.body.comment,
+    function(err, updatedComment) {
+      if (err) {
+        res.redirect("back");
+      } else {
+        res.redirect("/commentees/" + req.params.id);
+      }
+    }
+  );
+});
+
+// comments destroy
+router.delete("/:comment_id", function(req, res) {
+  Comment.findOneAndDelete({ _id: req.params.comment_id }, function(
+    err,
+    comment
+  ) {
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.redirect(`/commentees/${req.params.id}`);
+    }
+  });
+});
+
 // middleware
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
