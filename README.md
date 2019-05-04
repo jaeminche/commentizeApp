@@ -16,8 +16,7 @@ This app is built with JavaScript, Node.js, MongoDB, and Bootstrap.
 
 ## To be deployed soon!
 
--
--
+## -
 
 ## NOTABLE FEATURES
 
