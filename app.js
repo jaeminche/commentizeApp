@@ -54,6 +54,7 @@ app.use("/", indexRoutes);
 app.use("/commentees", commenteeRoutes);
 app.use("/commentees/:id/comments", commentRoutes);
 
+// this is for when using C9.
 // app.listen(process.env.PORT, process.env.IP, function() {
 //   console.log("app is listening");
 // });

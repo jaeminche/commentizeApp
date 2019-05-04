@@ -20,7 +20,12 @@
                 <p>
                     <em>Submitted by <%= commentee.author.username %></em>
                 </p>
-                <a class="btn btn-warning" href="/commentees/<%= commentee._id %>/edit">Edit</a>
+                <% if (currentUser && commentee.author.id.equals(currentUser._id)) { %>
+                    <a class="btn btn-warning" href="/commentees/<%= commentee._id %>/edit">Edit</a>
+                    <form class="d-inline" action="/commentees/<%= commentee._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                <% } %>
               </div>
             </div>
             
